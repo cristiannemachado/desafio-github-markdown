@@ -1,6 +1,6 @@
 # 👽 Desafio Github + Markdown 🚀
 
-![Welcome](https://tenor.com/pt-PT/view/programming-gif-14369405421462703642)  
+![Welcome](https://tenor.com/pt-PT/view/programming-gif-143694054214627036422)  
 Bem-vindo(a) visitante ao universo do Git e do Markdown, faça parte do  **Desafio de Projeto!** 🌌  
 
 Este projeto é um exercício prático para treinar:

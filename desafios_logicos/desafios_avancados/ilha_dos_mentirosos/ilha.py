@@ -1,21 +1,45 @@
-def cifra_cesar(texto, chave, modo='codificar'):
-    resultado = ''
-    for char in texto:
-        if char.isalpha():
-            deslocamento = chave if modo == 'codificar' else -chave
-            base = ord('A') if char.isupper() else ord('a')
-            novo_char = chr((ord(char) - base + deslocamento) % 26 + base)
-            resultado += novo_char
-        else:
-            resultado += char
-    return resultado
+def analisar_depoimentos(depoimentos):
+    suspeitos = list(depoimentos.keys())
+    for hipotese in suspeitos:
+        veredito = {}
+        for pessoa in suspeitos:
+            if pessoa == hipotese:
+                veredito[pessoa] = "verdadeiro"
+            else:
+                veredito[pessoa] = "mentiroso"
 
-if __name__ == '__main__':
-    print("🌟 Cifra de César Interativa 🌟")
-    modo = input("Você quer codificar ou decodificar? [codificar/decodificar] ").strip().lower()
-    texto = input("Digite o texto: ")
-    chave = int(input("Digite a chave de deslocamento (número): "))
-    resultado = cifra_cesar(texto, chave, modo)
-    print(f"\n🔐 Resultado: {resultado}")
- Ilha dos Mentirosos
+        if verificar_consistencia(depoimentos, veredito):
+            return veredito
+    return None
+
+def verificar_consistencia(depoimentos, veredito):
+    for pessoa, fala in depoimentos.items():
+        if veredito[pessoa] == "verdadeiro":
+            if veredito.get(fala) != "verdadeiro":
+                return False
+        else:
+            if veredito.get(fala) == "verdadeiro":
+                return False
+    return True
+
+if __name__ == "__main__":
+    print("🌴 Desafio: Ilha dos Mentirosos 🌴")
+    depoimentos = {}
+
+    n = int(input("Quantos moradores serão interrogados? "))
+    for _ in range(n):
+        nome = input("Nome do morador: ").strip()
+        fala = input(f'O que {nome} disse? (Ex: "João é verdadeiro"): ').strip()
+        partes = fala.split(" é ")
+        if len(partes) == 2:
+            depoimentos[nome] = partes[0]
+
+    resultado = analisar_depoimentos(depoimentos)
+
+    if resultado:
+        print("\n🔍 Veredito final:")
+        for pessoa, tipo in resultado.items():
+            print(f"- {pessoa}: {tipo}")
+    else:
+        print("\n❌ Nenhuma combinação consistente encontrada.")
 

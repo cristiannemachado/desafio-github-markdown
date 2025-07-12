@@ -35,6 +35,11 @@
 6. Envie um pull request para revisão.
 
 
+## Categorias de desafios
+
+- 👶 Iniciantes  
+- 🧠 Intermediários  
+- 🧨 Avançados
 
 ## 📚 Recursos úteis
 
